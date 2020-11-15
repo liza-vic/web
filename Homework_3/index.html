@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<style>
+table, td {
+    border: 1px solid black;
+     font-size: large;
+     text-align: left;
+}
+</style>
+<body> 
+
+<h1> Hello </h1>
+
+<table id="table"><tr>
+
+<th>Name</th>
+<th>Last Name</th>
+<th>Age</th>
+<th>GPA</th>
+ </table>
+
+<h3>Добавить новые данные: </h3>
+
+<label for="inp_1">Введите имя: </label>
+  <input type="text" id="inp_1">
+
+<label for="inp_2">Введите фамилию: </label>
+  <input type="text" id="inp_2">
+
+<label for="inp_3">Введите возраст: </label>
+  <input type="number" id="inp_3">
+
+<label for="inp_4">Введите средний балл: </label>
+  <input type="number" id="inp_4">
+
+ <input type="button" onclick="obrabotka()" name="myButton" value="Enter" />
+
+</body>
+
+<script>
+let students = [
+    {
+        firstName: 'Ivan',
+        lastName: 'Ivanov',
+        age: '19',
+        ballik: '6.7'
+    },
+    {
+        firstName: 'Polkan',
+        lastName: 'Polkanov',
+        age: '22',
+        ballik: '9'
+    },
+    {
+        firstName: 'Vlad',
+        lastName: 'Vlavislavovich',
+        age: '53',
+        ballik: '4.5'
+    },
+    {
+        firstName: 'Lida',
+        lastName: 'Ludovik',
+        age: '90',
+        ballik: '10'
+    },
+];
+
+let table = document.getElementById('table');
+
+for (let student of students) {
+    let tr = document.createElement('tr')
+    
+    let td1 = document.createElement('td')
+    td1.innerHTML = student.firstName
+    tr.appendChild(td1)
+    
+    let td2 = document.createElement('td')
+    td2.innerHTML = student.lastName
+    tr.appendChild(td2)
+    
+    let td3 = document.createElement('td')
+    td3.innerHTML = student.age
+    tr.appendChild(td3)
+
+    let td4 = document.createElement('td')
+    td4.innerHTML = student.ballik
+    tr.appendChild(td4)
+
+    table.appendChild(tr)
+}
+
+function obrabotka () {
+
+    let ovo = {
+        firstName: document.getElementById('inp_1').value,
+        lastName:  document.getElementById('inp_2').value,
+        age:       document.getElementById('inp_3').value,
+        ballik:    document.getElementById('inp_4').value
+    };
+
+    students.push(ovo);
+    console.log(students);
+//Добавляем данные в таблицу 
+                let newRow = table.insertRow(table.length),
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    cell4 = newRow.insertCell(3),
+                    inp_1 = document.getElementById("inp_1").value,
+                    inp_2 = document.getElementById("inp_2").value,
+                    inp_3 = document.getElementById("inp_3").value,
+                    inp_4 = document.getElementById("inp_4").value;
+                cell1.innerHTML = inp_1;
+                cell2.innerHTML = inp_2;
+                cell3.innerHTML = inp_3;
+                cell4.innerHTML = inp_4;
+}
+
+
+ </script>
+</html>
